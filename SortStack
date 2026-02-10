@@ -1,0 +1,54 @@
+package Backtracking;
+import java.util.*;
+
+public class SortStack {
+    
+    public static void sortedInsert(Stack<Integer> stack, int element) {
+        if (stack.isEmpty() || stack.peek() < element) {
+            stack.push(element);
+            return;
+        }
+        int top = stack.pop();
+        sortedInsert(stack, element);
+        stack.push(top);
+    }
+    
+    public static void sortStack(Stack<Integer> stack) {
+        if (stack.isEmpty()) {
+            return;
+        }
+        int top = stack.pop();
+        sortStack(stack);
+        sortedInsert(stack, top);
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        
+        Stack<Integer> stack = new Stack<>();
+        
+        System.out.println("Enter elements:");
+        for (int i = 0; i < n; i++) {
+            stack.push(sc.nextInt());
+        }
+        
+        System.out.println("Original Stack: " + stack);
+        
+        sortStack(stack);
+        
+        System.out.println("Sorted Stack: " + stack);
+    }
+}
+/*
+
+Example output:
+
+Enter number of elements: 5
+Enter elements:
+3 1 4 2 5
+Original Stack: [3, 1, 4, 2, 5]
+Sorted Stack: [1, 2, 3, 4, 5]
+*/
