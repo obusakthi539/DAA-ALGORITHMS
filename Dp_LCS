@@ -1,3 +1,10 @@
+Longest Common Subsequence 
+s1 = "abcde"
+s2 = "ashde"
+Output:
+Length = 3
+LCS = "ade"
+
 package Dp;
 import java.util.*;
 public class Lcs {
